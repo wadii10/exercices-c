@@ -1,41 +1,4 @@
 #include <stdio.h>
-void main()
-{
-    int tab[10], n, elt, somme;
-
-    do
-    {
-        printf("donner N: ");
-        scanf("%d", &n);
-    } while ((n > 10) || (n <= 0));
-
-    for (int i = 0; i < n; i++)
-    {
-        printf("donner un entier: ");
-        scanf("%d", &tab[i]);
-    }
-
-    // fonction pour afficher les element de tableau
-    afficher(tab, n);
-
-    // somme des elements
-    // somme = sommeDesElts(tab, n - 1);
-    // printf("\n la somme est %d \n", somme);
-
-    // fonction pour trier un tableau d'entier(tri a bul)
-    // tri(tab, n);
-
-    // fonction pour supprimer un elt dans un tableau : void suprimer (int t, int &m)c++
-    // printf("\n donner un element: ");
-    // scanf("%d", &elt);
-    // suppElt(tab, n, elt);
-
-    // fonction pour supprimer un elt dans un tableau : void suprimer (int t, int &m)c++
-    printf("\n donner un element: ");
-    scanf("%d", &elt);
-    addElt(tab,  n, elt);
-
-}
 
 // factoriel
 // int factoriel(int n)
@@ -144,3 +107,68 @@ void addElt(int t[], int m, int e)
 // fonction pour inserer un elt dans un tableau trié: void inserer (int t, int &m)c++
 
 // fonction pour fisionner deux tableaux triés: void fusion (int t[], int n, int j[], int m)
+void fusion (int t1[], int n, int t2[], int m, int t3[], int &p) {
+    int i, j;
+    p=0;
+    i=0;
+    j=0;
+    while((i<n)&&(j<m)){
+        if(t1[i]<t2[j]) {
+            t3[p]=t1[i];
+            i++;
+        }else {
+            t3[p]=t2[j];
+            j++;
+        }
+        p++;
+    }
+
+    for (int k=i; k<n; k++){
+        t3[p]=t1[k];
+        p++;
+    }
+
+    for (int k=j; k<m; k++){
+        t3[p]=t2[k];
+        p++;
+    }
+}
+
+
+int main()
+{
+    int tab[10], n, elt, somme;
+
+    do
+    {
+        printf("donner N: ");
+        scanf("%d", &n);
+    } while ((n > 10) || (n <= 0));
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("donner un entier: ");
+        scanf("%d", &tab[i]);
+    }
+
+    // fonction pour afficher les element de tableau
+    afficher(tab, n);
+
+    // somme des elements
+    // somme = sommeDesElts(tab, n - 1);
+    // printf("\n la somme est %d \n", somme);
+
+    // fonction pour trier un tableau d'entier(tri a bul)
+    // tri(tab, n);
+
+    // fonction pour supprimer un elt dans un tableau : void suprimer (int t, int &m)c++
+    // printf("\n donner un element: ");
+    // scanf("%d", &elt);
+    // suppElt(tab, n, elt);
+
+    // fonction pour supprimer un elt dans un tableau : void suprimer (int t, int &m)c++
+    printf("\n donner un element: ");
+    scanf("%d", &elt);
+    addElt(tab,  n, elt);
+return 0;
+}
